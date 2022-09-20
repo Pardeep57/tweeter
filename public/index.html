@@ -10,7 +10,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
       type="text/css"
     />
-
+    <!-- Get the special fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@1,300;1,600&display=swap"
       rel="stylesheet"
@@ -24,63 +24,65 @@
 
     <!-- Header CSS -->
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+    
+    <!-- CDN moment.js to help with displaying the time -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js" ></script>
 
-    <!-- New Tweets -->
+    <!-- New Tweets CSS -->
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
 
-    <!--Tweets-->
+    <!--Tweets CSS-->
+    <link rel="stylesheet" href="/styles/tweets.css" type="text/css"/>
+
+    <!--Error CSS-->
     <link rel="stylesheet" href="/styles/tweets.css" type="text/css"/>
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!--Tweet Icons & Toggle Buttons-->
+    <script src="https://kit.fontawesome.com/a4c9bc2fa3.js" crossorigin="anonymous"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
 
     <!-- Helper functions JS -->
     <script type="text/javascript" src="/scripts/helpers.js"></script>
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js" ></script>
-
+    
     <!-- Character count JS -->
     <script type="text/javascript" src=/scripts/composer-char-counter.js></script>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <!-- Prevents the 'zooming out' of the webpage as the dimensions get smaller -->
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
   </head>
 
   <body>
     <!-- Top nav bar (fixed) -->
-
     <nav class="nav-Bar">
       <div>
         <span class="logo">TWEETER</span>
       </div>
       <footer>
-        <button>
+        <button class='write'>
           <span><b>Write</b> a new tweet</span>
+          <i class="fas fa-angle-double-down"></i>
         </button>
       </footer>
     </nav>
-
     <header class="head">
       <div>
         <img src="/images/profile-hex.png" />
       </div>
       <br />
-      <div>
+      <div class="name">
         <h2>Pardeep Kaur</h2>
       </div>
     </header>
-
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
+        <div class="error-message">
+        </div>
         <h2>Compose Tweet</h2>
         <form action="/tweets" method="POST">
           <label for="tweet-text">What are you humming about?</label>
@@ -91,10 +93,10 @@
           </div>
         </form>
       </section>
-
       <section class="tweet-container">
-       
       </section>
+
+      
     </main>
   </body>
 </html>

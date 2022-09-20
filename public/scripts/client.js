@@ -37,6 +37,7 @@ const createTweetElement = tweetObj => {
   
   const renderTweets = arrayOfTweetObj => {
     // instead of append we will use prepend to see newly added tweets
+    
     for (let obj of arrayOfTweetObj) {
       $('.tweet-container').prepend(createTweetElement(obj))
     }
@@ -53,7 +54,7 @@ const createTweetElement = tweetObj => {
         text += queryString[index];
       }
     }
-    return text.replace(/%20/g, " ");
+    return decodeURIComponent(text);
   }
   
   const resetErrorMessage = violation => {
@@ -74,25 +75,46 @@ const createTweetElement = tweetObj => {
   };
 
   $(document).ready(function() {
-    const loadtweets = $.get('/tweets', function(data) {
-        renderTweets(data);
-    })
+    $('textarea').on('input', function() {
+      this.style.height = 'auto';
+      this.style.height = this.scrollHeight + 'px';
+    });
+    //get tweets
+    $.get('/tweets', renderTweets);
   
-    $('button').click(function(event) {
-        event.preventDefault();
-        const data = $('form').serialize()
-        const dataLength = (getText(data)).length;
-        if (dataLength > 140) {
-          alert('You wrote too many characters');
-        } else if (dataLength === 0) {
-          alert("You didn't write anything");
-        } else {
-          const dataToPost = ajaxPost('/tweets', data, function() {
-            $.get('/tweets', function(data) {
-              renderTweets(data)
-                 })
-                 $('textarea').val("")
-          })
-        }
-    })
+    // new tweet form set as hidden
+    $('.new-tweet').hide();
+  
+    // toggle write new tweetbutton
+    $('.write').click(function(event) {
+      $('.new-tweet').slideToggle('slow');
+      $('textarea').focus();
+    });
+  
+    // button clicked = form submitted
+    $('.submit-and-display button').click(function(event) {
+      event.preventDefault();
+      const data = $('form').serialize();
+      const dataLength = getText(data).length;
+  
+      if (dataLength > 140) {
+        resetErrorMessage('over count');
+      } else if (dataLength === 0) {
+        resetErrorMessage('empty');
+      } else {
+        resetErrorMessage();
+        ajaxPost('/tweets', data, function() {
+          //Get the tweet that was just posted
+          $.get('/tweets', renderLastTweet);
+          // clear the box after tweets are posted
+          $('textarea').val("");
+        });
+        //Reset the character counter to 140 after submitting the tweet
+        $(this)
+          .closest(".new-tweet")
+          .find(".counter")
+          .removeClass("negative-count")
+          .text(140);
+      }
+    });
   })
