@@ -36,8 +36,9 @@ const createTweetElement = tweetObj => {
   }
   
   const renderTweets = arrayOfTweetObj => {
+    // instead of append we will use prepend to see newly added tweets
     for (obj of arrayOfTweetObj) {
-      $('.tweet-container').append(createTweetElement(obj))
+      $('.tweet-container').prepend(createTweetElement(obj))
     }
   }
   
