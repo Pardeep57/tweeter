@@ -56,6 +56,23 @@ const createTweetElement = tweetObj => {
     return text.replace(/%20/g, " ");
   }
   
+  const resetErrorMessage = violation => {
+    if (violation === 'over count') {
+      $(".error-message").hide();
+      $(".error-message").empty();
+      $(".error-message").append("<p>Too many characters!</p>");
+      $(".error-message").slideDown("slow");
+    } else if (violation === 'empty') {
+      $(".error-message").hide();
+      $(".error-message").empty();
+      $(".error-message").append("<p>You wrote nothing, do you want to tweet?</p>");
+      $(".error-message").slideDown("slow");
+    } else {
+      $(".error-message").hide();
+      $(".error-message").empty();
+    }
+  };
+
   $(document).ready(function() {
     const loadtweets = $.get('/tweets', function(data) {
         renderTweets(data);
@@ -73,8 +90,8 @@ const createTweetElement = tweetObj => {
           const dataToPost = ajaxPost('/tweets', data, function() {
             $.get('/tweets', function(data) {
               renderTweets(data)
-              //need to figure out how to clear the text box after tweets are posted
-            })
+                 })
+                 $('textarea').val("")
           })
         }
     })
