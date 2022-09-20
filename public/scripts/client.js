@@ -37,7 +37,7 @@ const createTweetElement = tweetObj => {
   
   const renderTweets = arrayOfTweetObj => {
     // instead of append we will use prepend to see newly added tweets
-    for (obj of arrayOfTweetObj) {
+    for (let obj of arrayOfTweetObj) {
       $('.tweet-container').prepend(createTweetElement(obj))
     }
   }
@@ -46,14 +46,14 @@ const createTweetElement = tweetObj => {
     $.post(url, data, callback);
   }
   
-  const getTextLength = queryString => {
+  const getText = queryString => {
     let text = '';
-    for (index in queryString) {
+    for (let index in queryString) {
       if (index > 4) {
         text += queryString[index];
       }
     }
-    return text.replace(/%20/g, " ").length;
+    return text.replace(/%20/g, " ");
   }
   
   $(document).ready(function() {
@@ -62,11 +62,20 @@ const createTweetElement = tweetObj => {
     })
   
     $('button').click(function(event) {
-      event.preventDefault();
-      const data = $('form').serialize()
-      console.log(getTextLength(data));
-      const dataToPost = ajaxPost('/tweets', data, function() {
-        
-      })
+        event.preventDefault();
+        const data = $('form').serialize()
+        const dataLength = (getText(data)).length;
+        if (dataLength > 140) {
+          alert('You wrote too many characters');
+        } else if (dataLength === 0) {
+          alert("You didn't write anything");
+        } else {
+          const dataToPost = ajaxPost('/tweets', data, function() {
+            $.get('/tweets', function(data) {
+              renderTweets(data)
+              //need to figure out how to clear the text box after tweets are posted
+            })
+          })
+        }
     })
   })
