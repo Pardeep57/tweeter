@@ -8,17 +8,16 @@
   font-weight: 600;
 }
 
-button {
+.submit-and-display button {
   border: none;
   font-size: medium;
   font-family: "Bungee";
-  background-color:#4056A1;
+  background-color: #4056a1;
   color: #ffffff;
 }
-
 .submit-and-display {
   font-size: medium;
-  font-family: 'Bungee';
+  font-family: "Bungee";
   display: flex;
   justify-content: space-between;
   margin-top: 5px;
@@ -38,4 +37,19 @@ textarea {
   margin-top: 5px;
   height: 30px;
   width: 100%;
+}
+
+label {
+  font-size: smaller;
+}
+
+.negative-count {
+  color: red;
+}
+
+
+@media only screen and (min-width:1024px) {
+  .new-tweet {
+    width: 90%;
+  }
 }

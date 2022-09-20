@@ -63,3 +63,18 @@ article {
   border: solid;
   margin-bottom: 0.5em;
 }
+
+@media only screen and (min-width:1024px) {
+
+  body {
+    padding-top: 3em;
+    display: flex;
+    align-content: space-around;
+  }
+
+  body .container {
+    object-fit: fill;
+    width: 50%;
+    margin-right: 2em;
+  }
+}

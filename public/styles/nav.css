@@ -52,4 +52,25 @@
   animation-timing-function: ease;
 }
 
+
+@media only screen and (min-width:1024px) {
+  .nav-Bar {
+    background-color: #666973;
+    background-image: none;
+    height: 120px;
+    width: 100%;
+    color: #ffffff;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-Bar footer .write {
+    background-color: #666973;
+    background-image: none;
+  }
+}
+
   
