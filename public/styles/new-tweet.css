@@ -1,5 +1,6 @@
+/* for composing new tweets */
 .new-tweet {
-  width: 60%;
+  width: 90%;
   margin: 0.5em;
   display: flex;
   flex-wrap: wrap;
@@ -7,7 +8,7 @@
   justify-content: center;
   font-weight: 600;
 }
-
+/* button to submit new tweets */
 .submit-and-display button {
   border: none;
   font-size: medium;
@@ -23,6 +24,7 @@
   margin-top: 5px;
 }
 
+/* textarea for new tweet box */
 textarea {
   outline: none;
   overflow: hidden;
@@ -43,10 +45,10 @@ label {
   font-size: smaller;
 }
 
+/* red font when words count exceeds 140 char */
 .negative-count {
   color: red;
 }
-
 
 @media only screen and (min-width:1024px) {
   .new-tweet {

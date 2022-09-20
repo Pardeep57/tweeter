@@ -20,7 +20,7 @@
   .nav-Bar footer .write {
     outline: none;
     border: none;
-    background-color: #666973;
+    background-color:  #4056A1;
     color: #ffffff;
     font-family: 'Sans-serif';
     display: flex;
@@ -30,7 +30,6 @@
     font-size: 75%;
     font-weight: 10%;
   }
-
 
   /* Animation Code */
 @keyframes bouncing-arrow {
@@ -52,10 +51,9 @@
   animation-timing-function: ease;
 }
 
-
 @media only screen and (min-width:1024px) {
   .nav-Bar {
-    background-color: #666973;
+    background-color:  #4056A1;
     background-image: none;
     height: 120px;
     width: 100%;
@@ -68,7 +66,7 @@
   }
 
   .nav-Bar footer .write {
-    background-color: #666973;
+    background-color: #4056A1;
     background-image: none;
   }
 }
