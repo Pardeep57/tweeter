@@ -23,7 +23,6 @@ const createTweetElement = (tweetObj) => {
       <div>
         <span>${moment(tweetObj.created_at).fromNow()}</span>
       </div>
-      
       <div class="tweet-reactions"> 
         <span><i class="fas fa-flag"></i> <i class="fas fa-retweet"></i> <i class="fas fa-heart"></i></span>
       </div>
@@ -85,10 +84,8 @@ $(document).ready(function () {
   });
   //get method for tweets
   $.get("/tweets", renderTweets);
-
   // new tweet form is by default set as hidden
   $(".new-tweet").hide();
-
   // toggle button
   $(".write").click(function (event) {
     $(".new-tweet").slideToggle("slow");
@@ -100,7 +97,6 @@ $(document).ready(function () {
     event.preventDefault();
     const data = $("form").serialize();
     const dataLength = getText(data).length;
-
     if (dataLength > 140) {
       resetErrorMessage("over count");
     } else if (dataLength === 0) {
