@@ -28,6 +28,9 @@
     <!-- New Tweets -->
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
 
+    <!--Tweets-->
+    <link rel="stylesheet" href="/styles/tweets.css" type="text/css"/>
+
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -70,7 +73,7 @@
       </div>
       <br />
       <div>
-        <h2>Pardeep</h2>
+        <h2>Pardeep Kaur</h2>
       </div>
     </header>
 
@@ -78,10 +81,10 @@
     <main class="container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
-        <form>
+        <form action="/tweets" method="POST">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
-          <div>
+          <div class="submit-and-display">
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
@@ -89,6 +92,22 @@
       </section>
 
       <section class="tweet-container">
+        <article>
+          <header>
+            <div class="profile"><img src="/images/profile-hex.png"> </div>
+            <div class="username">Newton</div>
+            <div class="userid">@SirIsaac</div>
+  
+          </header>
+          <main class='tweet-content'>
+            I have seen further by standing on the shoulder of giants
+          </main>
+          <footer>
+            <div class="timestamp">10 days ago</div>
+            <div class="tweet-actions">
+            </div>
+          </footer>
+        </article>
       </section>
     </main>
   </body>
